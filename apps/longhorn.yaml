@@ -1,0 +1,19 @@
+project: default
+destination:
+  server: https://kubernetes.default.svc
+  namespace: longhorn-system
+syncPolicy:
+  syncOptions:
+    - CreateNamespace=true
+sources:
+  - repoURL: https://charts.longhorn.io/
+    targetRevision: v1.10.1
+    helm:
+      values: |
+        preUpgradeChecker:
+          jobEnabled: false
+        service:
+          ui:
+            type: LoadBalancer
+    chart: longhorn
+
