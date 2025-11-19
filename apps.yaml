@@ -1,0 +1,20 @@
+# https://argo-cd.readthedocs.io/en/latest/operator-manual/cluster-bootstrapping/
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: appofapps
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  source:
+    path: apps
+    repoURL: https://github.com/brettplarson/argo-homelab/
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true

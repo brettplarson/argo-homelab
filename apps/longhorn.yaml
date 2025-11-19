@@ -1,4 +1,8 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 project: default
+metadata:
+  name: longhorn
 destination:
   server: https://kubernetes.default.svc
   namespace: longhorn-system
