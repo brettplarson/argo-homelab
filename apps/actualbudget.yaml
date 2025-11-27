@@ -26,6 +26,7 @@ spec:
             server: /data/server-files
             user: /data/user-files
           ingress:
+            className: tailscale
             enabled: true
             hosts:
             - host: actualbudget.goat-locrian.ts.net
