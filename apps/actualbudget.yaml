@@ -25,7 +25,7 @@ spec:
           files:
             server: /data/server-files
             user: /data/user-files
-           service:
+          service:
             type: LoadBalancer
             annotations:
               tailscale.com/expose: "true"
