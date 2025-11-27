@@ -32,6 +32,8 @@ spec:
               paths:
                 - path: /
                   pathType: ImplementationSpecific
+            backend:
+              service: actualbudget
           persistence:
             enabled: true
             existingClaim: actualbudget-volume
