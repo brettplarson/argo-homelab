@@ -34,8 +34,8 @@ spec:
                 - path: /
                   pathType: ImplementationSpecific
             tls:
-              hosts:
-              - actualbudget.goat-locrian.ts.net
+              - hosts:
+                - actualbudget.goat-locrian.ts.net
           persistence:
             enabled: true
             existingClaim: actualbudget-volume
