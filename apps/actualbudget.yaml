@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: couchdb
+  name: actualbudget
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: couchdb
+    namespace: actualbudget
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
@@ -16,18 +16,19 @@ spec:
       enabled: true
   project: default
   sources:
-    - repoURL: https://apache.github.io/couchdb-helm
+    - repoURL: https://community-charts.github.io/helm-charts
       targetRevision: 4.6.2
       helm:
         values: |
-          couchdbConfig:
-            couchdb:
-              uuid: e721236b54c146849b0d81d3afa0a62a
-          persistentVolume:
-            enabled: true
+          strategy:
+            type: Recreate
+          files:
+            server: /data/server-files
+            user: /data/user-files
           ingress:
             enabled: true
-          image:
-            tag: 3.5.0
-      chart: couchdb
+          persistence:
+            enabled: true
+            existingClaim: actualbudget-volume
+      chart: actualbudget
 
