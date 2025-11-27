@@ -25,6 +25,10 @@ spec:
           files:
             server: /data/server-files
             user: /data/user-files
+           service:
+            type: LoadBalancer
+            annotations:
+              tailscale.com/expose: "true"
           ingress:
             enabled: true
           hosts:
