@@ -31,11 +31,11 @@ spec:
               tailscale.com/expose: "true"
           ingress:
             enabled: true
-          hosts:
-          - host: actualbudget.goat-locrian.ts.net
-            paths:
-              - path: /
-                pathType: ImplementationSpecific
+            hosts:
+            - host: actualbudget.goat-locrian.ts.net
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
           persistence:
             enabled: true
             existingClaim: actualbudget-volume

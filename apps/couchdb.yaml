@@ -33,6 +33,10 @@ spec:
           ingress:
             enabled: true
             hosts: couchdb.goat-locrian.ts.net
+            - host: actualbudget.goat-locrian.ts.net
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
           image:
             tag: 3.5.0
       chart: couchdb
