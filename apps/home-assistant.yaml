@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-assistant
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: home-assistant
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    managedNamespaceMetadata:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+  project: default
+  sources:
+    - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
+      targetRevision: v1.10.1
+      helm:
+        values: |
+          ingress:
+            enabled: true
+          persistance:
+            enabled: true
+      chart: home-assistant
+
