@@ -25,19 +25,7 @@ spec:
           files:
             server: /data/server-files
             user: /data/user-files
-          ingress:
-            className: tailscale
-            enabled: true
-            hosts:
-            - host: actualbudget.goat-locrian.ts.net
-              paths:
-                - path: /
-                  pathType: ImplementationSpecific
-            tls:
-              - hosts:
-                - actualbudget.goat-locrian.ts.net
           persistence:
             enabled: true
             existingClaim: actualbudget-volume
       chart: actualbudget
-

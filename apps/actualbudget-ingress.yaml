@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actualbudget-ingress
+  namespace: argocd
+spec:
+  project: actualbudget
+  source:
+    repoURL: https://github.com/argoproj/argo-cd  # dummy repo URL
+    targetRevision: HEAD
+    inline:
+      manifests: |
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: actualbudget
+        spec:
+          defaultBackend:
+            service:
+              name: actualbudget
+              port:
+                number: 5006
+          ingressClassName: tailscale
+          tls:
+            - hosts:
+                - actualbudget
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: actualbudget
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
