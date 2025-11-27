@@ -4,7 +4,7 @@ metadata:
   name: actualbudget-ingress
   namespace: argocd
 spec:
-  project: actualbudget
+  project: default
   source:
     repoURL: https://github.com/argoproj/argo-cd  # dummy repo URL
     targetRevision: HEAD
