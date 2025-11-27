@@ -27,6 +27,7 @@ spec:
             enabled: true
           ingress:
             enabled: true
+            hosts: couchdb.goat-locrian.ts.net
           image:
             tag: 3.5.0
       chart: couchdb

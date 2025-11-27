@@ -27,6 +27,11 @@ spec:
             user: /data/user-files
           ingress:
             enabled: true
+          hosts:
+          - host: actualbudget.goat-locrian.ts.net
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
           persistence:
             enabled: true
             existingClaim: actualbudget-volume

@@ -22,6 +22,11 @@ spec:
         values: |
           ingress:
             enabled: true
+            hosts:
+              - host: actualbudget.goat-locrian.ts.net
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
           persistance:
             enabled: true
       chart: home-assistant
