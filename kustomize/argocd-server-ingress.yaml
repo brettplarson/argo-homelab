@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: homeassistant
-  namespace: home-assistant
+  name: argocd-tailscale
+  namespace: argocd
 spec:
   defaultBackend:
     service:
-      name: homeassistant
+      name: argocd-server
       port:
-        number: 8080
+        number: 80
   ingressClassName: tailscale
   tls:
     - hosts:
-        - homeassistant
+        - argocd
 
