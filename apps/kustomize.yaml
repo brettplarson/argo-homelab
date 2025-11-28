@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: kustomize
+    repoURL: https://github.com/brettplarson/argo-homelab/
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: actualbudget
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
