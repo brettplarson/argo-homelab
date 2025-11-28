@@ -6,7 +6,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: couchdb
+      name: couchdb-svc-couchdb
       port:
         number: 5984
   ingressClassName: tailscale
