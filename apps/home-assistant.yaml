@@ -22,5 +22,9 @@ spec:
         values: |
           persistance:
             enabled: true
+          configuration:
+            enabled: true
+            trusted_proxies:
+            - 10.224.0.0/16
       chart: home-assistant
 
