@@ -25,14 +25,8 @@ spec:
               uuid: e721236b54c146849b0d81d3afa0a62a
           persistentVolume:
             enabled: true
-          ingress:
-            loadBalancerClass: tailscale
+          service:
             enabled: true
-            hosts: couchdb.goat-locrian.ts.net
-            - host: actualbudget.goat-locrian.ts.net
-              paths:
-                - path: /
-                  pathType: ImplementationSpecific
           image:
             tag: 3.5.0
       chart: couchdb

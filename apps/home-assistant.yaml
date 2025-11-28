@@ -20,14 +20,6 @@ spec:
       targetRevision: 0.3.32
       helm:
         values: |
-          ingress:
-            enabled: true
-            loadBalancerClass: tailscale
-            hosts:
-              - host: actualbudget.goat-locrian.ts.net
-              paths:
-                - path: /
-                  pathType: ImplementationSpecific
           persistance:
             enabled: true
       chart: home-assistant
