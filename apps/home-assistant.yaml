@@ -22,10 +22,8 @@ spec:
         values: |
           persistance:
             enabled: true
-          configuration:
-            enabled: true
-            forceInit: true
-            trusted_proxies:
-            - 10.224.0.0/16
+          ingress:
+            internal: false
+            external: true
       chart: home-assistant
 
