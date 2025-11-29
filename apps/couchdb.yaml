@@ -23,6 +23,7 @@ spec:
           couchdbConfig:
             couchdb:
               uuid: e721236b54c146849b0d81d3afa0a62a
+          createAdminSecret: false
           persistentVolume:
             enabled: true
           service:
