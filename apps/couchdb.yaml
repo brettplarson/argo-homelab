@@ -20,7 +20,22 @@ spec:
       targetRevision: 4.6.2
       helm:
         values: |
+          clusterSize: 1
           couchdbConfig:
+            couchdb:
+              single_node: true
+            chttpd:
+              enable_cors: true
+            chttpd_auth:
+              require_valid_user: false
+            cors:
+              origins: '*'
+              credentials: true
+              methods: 'GET, PUT, POST, HEAD, DELETE'
+              headers: 'accept, authorization, content-type, origin, referer, x-csrf-token'
+            httpd:
+              WWW-Authenticate: Basic realm="couchdb"
+              enable_cors: true
             couchdb:
               uuid: e721236b54c146849b0d81d3afa0a62a
           createAdminSecret: false
