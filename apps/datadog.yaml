@@ -23,6 +23,16 @@ spec:
       helm:
         values: |
           datadog:
+            logs:
+              enabled: true
+              containerCollectAll: true
+            processAgent:
+              enabled: true
+              processCollection: true
+            networkMonitoring:
+              enabled: true
+            serviceMonitoring:
+              enabled: true
             site: us5.datadoghq.com
             apiKeyExistingSecret: datadog-secret
             clusterName: homelab-nuc-talos
