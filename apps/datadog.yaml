@@ -23,6 +23,7 @@ spec:
       helm:
         values: |
           datadog:
+            site: us5.datadoghq.com
             apiKeyExistingSecret: datadog-secret
             clusterName: homelab-nuc-talos
             kubelet:
