@@ -19,7 +19,48 @@ spec:
   project: default
   sources:
     - repoURL: https://helm.datadoghq.com
-      targetRevision: 2.15.2
-      helm: {}
-      chart: datadog-operator
+      targetRevision: 3.149.0
+      helm:
+        values: |
+          datadog:
+            apiKeyExistingSecret: datadog-secret
+            clusterName: homelab-nuc-talos
+            kubelet:
+              tlsVerify: false
+            ignoreAutoConfig:
+            - etcd
+            confd:
+              etcd.yaml: |-
+                # You can configure the Agent to only run this check on the host where etcd is running
+                # by using `ad_identifiers` for a pod that would only be running on a control-plane node.
+                # This is to avoid errors when the Agent is running on worker nodes.
+                # Another approach is to run a minimal pod on the control-plane node and use it for `ad_identifiers`.
+                ad_identifiers:
+                  - kube-scheduler
+                instances:
+                    # This is the node IP where metrics are exposed because kube-scheduler runs in host network mode.
+                    # Otherwise, the IP could be hardcoded to the master node IP (also in the environment variable `DD_KUBERNETES_KUBELET_HOST`).
+                  - prometheus_url: https://%%host%%:2379/metrics
+                    tls_ca_cert: /host/etc/kubernetes/pki/etcd/ca.crt
+                    tls_cert: /host/etc/kubernetes/pki/etcd/server.crt
+                    tls_private_key: /host/etc/kubernetes/pki/etcd/server.key
+          agents:
+            # Tolerations are needed to be scheduled on control-plane nodes running etcd
+            tolerations:
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+              effect: NoSchedule
+            volumes:
+              # On Talos, etcd certificates are stored in /system/secrets/etcd
+              - hostPath:
+                  path: /system/secrets/etcd
+                name: etcd-certs
+            volumeMounts:
+              - name: etcd-certs
+                mountPath: /host/etc/kubernetes/pki/etcd
+                readOnly: true
+          providers:
+            talos:
+              enabled: true
+      chart: datadog
 

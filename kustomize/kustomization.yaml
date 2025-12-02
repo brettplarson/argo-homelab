@@ -9,4 +9,3 @@ resources:
   - home-assistant-ingress.yaml
   - longhorn-ingress.yaml
   - datadog-secret.json
-  - datadog-agent.yaml
