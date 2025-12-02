@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: datadog
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: datadog
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: privileged
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+  project: default
+  sources:
+    - repoURL: https://helm.datadoghq.com
+      targetRevision: 2.15.2
+      helm:
+        values: |
+          kind: "DatadogAgent"
+          apiVersion: "datadoghq.com/v2alpha1"
+          metadata:
+            name: "datadog"
+          spec:
+            global:
+              site: "us5.datadoghq.com"
+              credentials:
+                apiSecret:
+                  secretName: "datadog-secret"
+                  keyName: "api-key"
+      chart: datadog-operator
+
