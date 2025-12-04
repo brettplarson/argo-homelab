@@ -9,3 +9,5 @@ resources:
   - home-assistant-ingress.yaml
   - longhorn-ingress.yaml
   - datadog-secret.json
+  - metallb-annoucment.yaml
+  - metallb-pool.yaml
