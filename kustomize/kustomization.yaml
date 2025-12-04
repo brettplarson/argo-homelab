@@ -8,3 +8,5 @@ resources:
   - couchdb-secret.json
   - home-assistant-ingress.yaml
   - longhorn-ingress.yaml
+  - metallb-annoucment.yaml
+  - metallb-pool.yaml
