@@ -27,5 +27,8 @@ spec:
             user: /data/user-files
           persistence:
             enabled: true
-            existingClaim: actualbudget-volume
+            size: 10Gi
+            accessModes:
+              - ReadWriteOnce
+            storageClass: "longhorn"
       chart: actualbudget
