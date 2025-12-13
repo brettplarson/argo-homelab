@@ -17,7 +17,7 @@ spec:
   project: default
   sources:
     - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
-      targetRevision: 0.3.32
+      targetRevision: 0.3.*
       helm:
         values: |
           persistance:
