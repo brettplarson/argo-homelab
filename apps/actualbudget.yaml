@@ -17,7 +17,7 @@ spec:
   project: default
   sources:
     - repoURL: https://community-charts.github.io/helm-charts
-      targetRevision: 1.8.4
+      targetRevision: 1.*.*
       helm:
         values: |
           strategy:
