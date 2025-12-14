@@ -29,6 +29,6 @@ spec:
             enabled: true
             forceInit: true
             trusted_proxies:
-              - 10.224.0.0/16
+              - 10.224.2.0/24
       chart: home-assistant
 
