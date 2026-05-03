@@ -20,6 +20,8 @@ spec:
       targetRevision: 1.*.*
       helm:
         values: |
+          image:
+            tag: 26.4.0
           strategy:
             type: Recreate
           files:
