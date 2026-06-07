@@ -21,7 +21,7 @@ spec:
       helm:
         values: |
           image:
-            tag: 26.5.2
+            tag: 26.6.0
           strategy:
             type: Recreate
           files:
