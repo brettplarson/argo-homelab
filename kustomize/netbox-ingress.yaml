@@ -1,16 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: homeassistant
-  namespace: home-assistant
+  name: netbox
+  namespace: netbox
 spec:
   defaultBackend:
     service:
-      name: home-assistant
+      name: netbox
       port:
-        number: 8080
+        number: 80
   ingressClassName: tailscale
   tls:
     - hosts:
-        - homeassistant
-
+        - netbox

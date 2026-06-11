@@ -11,3 +11,4 @@ resources:
   - datadog-secret.json
   - metallb-annoucment.yaml
   - metallb-pool.yaml
+  - netbox-ingress.yaml

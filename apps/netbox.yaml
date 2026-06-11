@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: home-assistant
+  name: netbox
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: home-assistant
+    namespace: netbox
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
@@ -16,19 +16,16 @@ spec:
       enabled: true
   project: default
   sources:
-    - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
-      targetRevision: 0.3.*
+    - repoURL: https://charts.netbox.oss.netboxlabs.com/
+      targetRevision: 8.3.*
       helm:
         values: |
-          persistance:
+          postgresql:
             enabled: true
-          ingress:
-            internal: false
-            external: true
-          configuration:
+          redis:
             enabled: true
-            forceInit: true
-            trusted_proxies:
-              - 10.244.2.0/24
-      chart: home-assistant
-
+          superuser:
+            name: admin
+            email: admin@example.com
+            password: adminpassword
+      chart: netbox
