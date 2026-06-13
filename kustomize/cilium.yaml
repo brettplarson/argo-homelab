@@ -1,0 +1,22 @@
+
+---
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: "pool"
+spec:
+  cidrs:
+    - cidr: "192.168.4.192/26"
+---
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: l2policy
+spec:
+  loadBalancerIPs: true
+  interfaces:
+    - eth0
+  nodeSelector:
+    matchLabels:
+      kubernetes.io/hostname: b8aeed75d547
+

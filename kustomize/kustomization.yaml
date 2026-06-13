@@ -4,11 +4,8 @@ kind: Kustomization
 resources:
   - actualbudget-ingress.yaml
   - argocd-server-ingress.yaml
+  - cilium.yaml
   - couchdb-ingress.yaml
   - couchdb-secret.json
-  - home-assistant-ingress.yaml
   - longhorn-ingress.yaml
-  - datadog-secret.json
-  - metallb-annoucment.yaml
-  - metallb-pool.yaml
   - netbox-ingress.yaml
